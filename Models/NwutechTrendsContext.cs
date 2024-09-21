@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using _41505212__API.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace _41505212__API.Models;
 
 public partial class NwutechTrendsContext : DbContext
 {
+    internal IEnumerable<object> JobTelemetry;
+
     public NwutechTrendsContext()
     {
     }
@@ -15,106 +18,20 @@ public partial class NwutechTrendsContext : DbContext
     {
     }
 
-    public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
-
-    public virtual DbSet<AspNetRoleClaim> AspNetRoleClaims { get; set; }
-
-    public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
-
-    public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
-
-    public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
-
-    public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; }
-
     public virtual DbSet<Client> Clients { get; set; }
-
-    public virtual DbSet<Client1> Clients1 { get; set; }
 
     public virtual DbSet<JobTelemetry> JobTelemetries { get; set; }
 
-    public virtual DbSet<JobTelemetry1> JobTelemetries1 { get; set; }
-
     public virtual DbSet<Process> Processes { get; set; }
-
-    public virtual DbSet<Process1> Processes1 { get; set; }
 
     public virtual DbSet<Project> Projects { get; set; }
 
-    public virtual DbSet<Project1> Projects1 { get; set; }
-
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=tcp:server-proj2.database.windows.net,1433;Initial Catalog=NWUTechTrends;Persist Security Info=False;User ID=p41505212;Password=project2@41;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+        => optionsBuilder.UseSqlServer("Server=tcp:cmpgserver323.database.windows.net,1433;Initial Catalog=NwuTech;Persist Security Info=False;User ID=Nthabiseng;Password=Mohlobane@2024;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<AspNetRole>(entity =>
-        {
-            entity.HasIndex(e => e.NormalizedName, "RoleNameIndex")
-                .IsUnique()
-                .HasFilter("([NormalizedName] IS NOT NULL)");
-
-            entity.Property(e => e.Name).HasMaxLength(256);
-            entity.Property(e => e.NormalizedName).HasMaxLength(256);
-        });
-
-        modelBuilder.Entity<AspNetRoleClaim>(entity =>
-        {
-            entity.HasIndex(e => e.RoleId, "IX_AspNetRoleClaims_RoleId");
-
-            entity.HasOne(d => d.Role).WithMany(p => p.AspNetRoleClaims).HasForeignKey(d => d.RoleId);
-        });
-
-        modelBuilder.Entity<AspNetUser>(entity =>
-        {
-            entity.HasIndex(e => e.NormalizedEmail, "EmailIndex");
-
-            entity.HasIndex(e => e.NormalizedUserName, "UserNameIndex")
-                .IsUnique()
-                .HasFilter("([NormalizedUserName] IS NOT NULL)");
-
-            entity.Property(e => e.Email).HasMaxLength(256);
-            entity.Property(e => e.NormalizedEmail).HasMaxLength(256);
-            entity.Property(e => e.NormalizedUserName).HasMaxLength(256);
-            entity.Property(e => e.UserName).HasMaxLength(256);
-
-            entity.HasMany(d => d.Roles).WithMany(p => p.Users)
-                .UsingEntity<Dictionary<string, object>>(
-                    "AspNetUserRole",
-                    r => r.HasOne<AspNetRole>().WithMany().HasForeignKey("RoleId"),
-                    l => l.HasOne<AspNetUser>().WithMany().HasForeignKey("UserId"),
-                    j =>
-                    {
-                        j.HasKey("UserId", "RoleId");
-                        j.ToTable("AspNetUserRoles");
-                        j.HasIndex(new[] { "RoleId" }, "IX_AspNetUserRoles_RoleId");
-                    });
-        });
-
-        modelBuilder.Entity<AspNetUserClaim>(entity =>
-        {
-            entity.HasIndex(e => e.UserId, "IX_AspNetUserClaims_UserId");
-
-            entity.HasOne(d => d.User).WithMany(p => p.AspNetUserClaims).HasForeignKey(d => d.UserId);
-        });
-
-        modelBuilder.Entity<AspNetUserLogin>(entity =>
-        {
-            entity.HasKey(e => new { e.LoginProvider, e.ProviderKey });
-
-            entity.HasIndex(e => e.UserId, "IX_AspNetUserLogins_UserId");
-
-            entity.HasOne(d => d.User).WithMany(p => p.AspNetUserLogins).HasForeignKey(d => d.UserId);
-        });
-
-        modelBuilder.Entity<AspNetUserToken>(entity =>
-        {
-            entity.HasKey(e => new { e.UserId, e.LoginProvider, e.Name });
-
-            entity.HasOne(d => d.User).WithMany(p => p.AspNetUserTokens).HasForeignKey(d => d.UserId);
-        });
-
         modelBuilder.Entity<Client>(entity =>
         {
             entity.ToTable("Client", "Config");
@@ -125,16 +42,7 @@ public partial class NwutechTrendsContext : DbContext
             entity.Property(e => e.DateOnboarded).HasColumnType("datetime");
         });
 
-        modelBuilder.Entity<Client1>(entity =>
-        {
-            entity.HasKey(e => e.ClientId);
-
-            entity.ToTable("Clients");
-
-            entity.Property(e => e.ClientId).ValueGeneratedNever();
-        });
-
-        modelBuilder.Entity<JobTelemetry1>(entity =>
+        modelBuilder.Entity<JobTelemetry>(entity =>
         {
             entity.ToTable("JobTelemetry", "Telemetry");
 
@@ -195,15 +103,6 @@ public partial class NwutechTrendsContext : DbContext
             entity.Property(e => e.Submitter).IsUnicode(false);
         });
 
-        modelBuilder.Entity<Process1>(entity =>
-        {
-            entity.HasKey(e => e.ProcessId);
-
-            entity.ToTable("Processes");
-
-            entity.Property(e => e.ProcessId).ValueGeneratedNever();
-        });
-
         modelBuilder.Entity<Project>(entity =>
         {
             entity.ToTable("Project", "Config");
@@ -224,15 +123,6 @@ public partial class NwutechTrendsContext : DbContext
             entity.Property(e => e.ProjectStatus)
                 .HasMaxLength(255)
                 .IsUnicode(false);
-        });
-
-        modelBuilder.Entity<Project1>(entity =>
-        {
-            entity.HasKey(e => e.ProjectId);
-
-            entity.ToTable("Projects");
-
-            entity.Property(e => e.ProjectId).ValueGeneratedNever();
         });
 
         OnModelCreatingPartial(modelBuilder);
