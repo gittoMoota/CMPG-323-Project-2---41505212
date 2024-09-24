@@ -1,6 +1,8 @@
-﻿namespace _41505212__API.Authentication
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace _41505212__API.Authentication
 {
-    public class ApplicationUser
+    public class ApplicationUser : IdentityUser
     {
     }
 }
