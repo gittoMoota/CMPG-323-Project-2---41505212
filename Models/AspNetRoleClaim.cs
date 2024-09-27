@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity;
 
 namespace _41505212__API.Models;
 
@@ -13,5 +14,5 @@ public partial class AspNetRoleClaim
 
     public string? ClaimValue { get; set; }
 
-    public virtual AspNetRole Role { get; set; } = null!;
+    public virtual IdentityRole Role { get; set; } = null!;
 }
