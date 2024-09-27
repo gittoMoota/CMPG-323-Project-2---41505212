@@ -4,15 +4,15 @@ namespace JWTAuthentication.Authentication
 {
     public class RegisterModel
     {
-        [Required(ErrorMessage = "Username required!")]
+        [Required(ErrorMessage = "User Name is required")]
         public string? Username { get; set; }
 
 
         [EmailAddress]
-        [Required(ErrorMessage = "Email address required!")]
+        [Required(ErrorMessage = "Email is required")]
         public string? Email { get; set; }
 
-        [Required(ErrorMessage = "Password is required!")]
+        [Required(ErrorMessage = "Password is required")]
         public string? Password { get; set; }
 
     }
