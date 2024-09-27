@@ -4,7 +4,7 @@ This project is an API designed to manage telemetry data, allowing users to crea
 
 To use the API, new users have to register,login to the the token. The user will use the the token as authentication. Afterwards, the user can then safely perform or test the API functionalities.
 
-ENDPOINTS AND ASPECTS IMPLEMENTED
+## **ENDPOINTS AND ASPECTS IMPLEMENTED** ##
 
 GET: Retrieve all Telemetry entries.
 
