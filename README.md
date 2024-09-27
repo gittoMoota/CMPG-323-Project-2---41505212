@@ -1,4 +1,4 @@
-#     CMPG-323-Project-2---41505212
+# CMPG-323-Project-2---41505212
 
 This project is an API designed to manage telemetry data, allowing users to create, retrieve, update, and delete telemetry entries in a database. The API includes endpoints to calculate and retrieve cumulative time and cost savings for specific projects or clients, based on specified criteria. It also features authentication to ensure secure access and includes built-in checks to validate telemetry entries before they are modified or deleted.
 
@@ -20,7 +20,7 @@ GET GetSavings (by Project): Calculate and retrieve cumulative time and cost sav
 
 GET GetSavings (by Client): Calculate and retrieve cumulative time and cost savings based on Client ID and date range.
 
-References
+## **References** ##
 
 [Tutorial: Create a web API with ASP.NET Core | Microsoft Docs](https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-6.0&tabs=visual-studio)
 
