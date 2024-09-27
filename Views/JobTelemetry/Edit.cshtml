@@ -1,0 +1,89 @@
+﻿@model _41505212__API.Models.JobTelemetry
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>JobTelemetry</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="ProccesId" class="control-label"></label>
+                <input asp-for="ProccesId" class="form-control" />
+                <span asp-validation-for="ProccesId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JobId" class="control-label"></label>
+                <input asp-for="JobId" class="form-control" />
+                <span asp-validation-for="JobId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="QueueId" class="control-label"></label>
+                <input asp-for="QueueId" class="form-control" />
+                <span asp-validation-for="QueueId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StepDescription" class="control-label"></label>
+                <input asp-for="StepDescription" class="form-control" />
+                <span asp-validation-for="StepDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HumanTime" class="control-label"></label>
+                <input asp-for="HumanTime" class="form-control" />
+                <span asp-validation-for="HumanTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UniqueReference" class="control-label"></label>
+                <input asp-for="UniqueReference" class="form-control" />
+                <span asp-validation-for="UniqueReference" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UniqueReferenceType" class="control-label"></label>
+                <input asp-for="UniqueReferenceType" class="form-control" />
+                <span asp-validation-for="UniqueReferenceType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BusinessFunction" class="control-label"></label>
+                <input asp-for="BusinessFunction" class="form-control" />
+                <span asp-validation-for="BusinessFunction" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Geography" class="control-label"></label>
+                <input asp-for="Geography" class="form-control" />
+                <span asp-validation-for="Geography" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExcludeFromTimeSaving" class="control-label"></label>
+                <input asp-for="ExcludeFromTimeSaving" class="form-control" />
+                <span asp-validation-for="ExcludeFromTimeSaving" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AdditionalInfo" class="control-label"></label>
+                <input asp-for="AdditionalInfo" class="form-control" />
+                <span asp-validation-for="AdditionalInfo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EntryDate" class="control-label"></label>
+                <input asp-for="EntryDate" class="form-control" />
+                <span asp-validation-for="EntryDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

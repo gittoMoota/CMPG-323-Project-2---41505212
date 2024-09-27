@@ -1,0 +1,101 @@
+﻿@model IEnumerable<_41505212__API.Models.JobTelemetry>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProccesId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QueueId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StepDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HumanTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UniqueReference)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UniqueReferenceType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BusinessFunction)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Geography)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExcludeFromTimeSaving)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdditionalInfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EntryDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProccesId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QueueId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StepDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HumanTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UniqueReference)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UniqueReferenceType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BusinessFunction)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Geography)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExcludeFromTimeSaving)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdditionalInfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EntryDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

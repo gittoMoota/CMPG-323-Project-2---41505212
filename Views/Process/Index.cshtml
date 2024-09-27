@@ -1,0 +1,101 @@
+﻿@model IEnumerable<_41505212__API.Models.Process>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProcessName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProcessType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsFramework)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RequiresDefaultConfig)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Submitter)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateSubmitted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProcessConfigUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReportUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DefaultGeography)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DefaultBusinessFunction)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Platform)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProcessName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProcessType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsFramework)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequiresDefaultConfig)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Submitter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateSubmitted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProcessConfigUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReportUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DefaultGeography)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DefaultBusinessFunction)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Platform)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ProcessId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ProcessId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProcessId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
